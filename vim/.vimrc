@@ -26,6 +26,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'nordtheme/vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " Sets colorscheme.
@@ -40,6 +41,12 @@ let g:cpp_concepts_highlight = 1
 
 " Start NERDTree and leave the cursor in it.
 autocmd VimEnter * NERDTree
+
+" Automatically open a terminal at Vim startup
+autocmd VimEnter * FloatermNew --name=term --wintype=split --height=15
+
+" Toggle the terminal with F12
+nnoremap <F12> :FloatermToggle term<CR>
 
 " Refresh NERDTree when a file is saved.
 autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
